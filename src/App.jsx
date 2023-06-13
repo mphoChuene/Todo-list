@@ -1,34 +1,78 @@
-import { useState } from "react";
-import "./App.css";
+import React, { useState } from "react";
+import "../src/App.css";
 
-function App() {
-  const [todoList, setTodoList] = useState([]);
-  const [newTask, setNewTask] = useState("");
+function TodoList() {
+  const [todos, setTodos] = useState([]);
+  const [inputValue, setInputValue] = useState("");
 
-  const handleChange = (event) => {
-    setNewTask(event.target.value);
+  const addTodo = () => {
+    if (inputValue !== "") {
+      const newTodo = {
+        id: Math.random(),
+        text: inputValue,
+      };
+      setTodos([...todos, newTodo]);
+      setInputValue("");
+    }
   };
 
-  const addTask = () => {
-    const newTodoList = [...todoList, newTask];
-    setTodoList(newTodoList);
+  const deleteTodo = (id) => {
+    const updatedTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(updatedTodos);
+  };
+
+  const updateTodo = (id, newText) => {
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, text: newText };
+      }
+      return todo;
+    });
+    setTodos(updatedTodos);
   };
 
   return (
-    <div className="App">
-      <h2>To-do List</h2>
-      <div className="addTask">
-        <input type="text" onChange={handleChange} />
-        <button onClick={addTask}>Add</button>
+    <>
+      <div className="container">
+        <h1>Todo List</h1> <br />
+        <div className="inputBox">
+          <input
+            type="text"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+          />
+          <button onClick={addTodo}>Add</button>
+          <ul>
+            {todos.map((todo) => (
+              <li key={todo.id}>
+                <input
+                  type="text"
+                  value={todo.text}
+                  onChange={(e) => updateTodo(todo.id, e.target.value)}
+                />
+                <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-      <div className="list">
-        {todoList.map((task) => {
-          return <></>;
-        })}
+
+      <div class="area">
+        <ul class="circles">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
       </div>
-      {newTask}
-    </div>
+    </>
   );
 }
 
-export default App;
+export default TodoList;
