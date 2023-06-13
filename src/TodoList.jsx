@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import "../src/App.css";
+/* import React, { useState } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Login from "./Login";
+import Signup from "./Signup"; */
 
 function TodoList() {
   const [todos, setTodos] = useState([]);
@@ -35,7 +39,7 @@ function TodoList() {
     <>
       <div className="container">
         <h1>Todo List</h1> <br />
-        <div className="inputBox">
+        <div>
           <input
             type="text"
             value={inputValue}
