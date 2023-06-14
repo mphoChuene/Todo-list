@@ -38,7 +38,7 @@ function TodoList() {
   return (
     <>
       <div className="container">
-        <h1>Todo List</h1> <br />
+        <h1>Todo List</h1>
         <div>
           <input
             type="text"

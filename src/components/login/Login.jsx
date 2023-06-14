@@ -1,8 +1,11 @@
 import "./LoginUi.css";
+
 import profile from "../../components/image/a.png";
 import email from "../../components/image/email.jpg";
 import pass from "../../components/image/pass.png";
+
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 /* function Login({ handleLogin }) {
   const [email, setEmail] = useState("");
@@ -44,7 +47,7 @@ const Login = () => {
               </div>
 
               <p className="link">
-                <a href="#">Forgot password ?</a> Or<a href="#">Sign Up</a>
+                <Link to={"/signup"}>Sign Up</Link>
               </p>
             </div>
           </div>

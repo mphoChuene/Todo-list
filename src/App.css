@@ -35,10 +35,10 @@ body {
   top: 50vh;
 }
 
-h1 {
+.container h1 {
   position: relative;
   bottom: 150px;
-  left: 270px;
+  left: 400px;
   text-align: center;
   color: #fff;
   font-size: 50px;
